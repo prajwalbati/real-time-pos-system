@@ -13,8 +13,8 @@ console.log("Server started");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use("/api/inventory", require("./api/inventory"));
-app.use("/api", require("./api/transactions"));
+app.use("/api/inventory", require("./server/api/inventory"));
+app.use("/api", require("./server/api/transactions"));
 
 app.all("/*", function(req, res, next) {
     // CORS headers
