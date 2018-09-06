@@ -1,0 +1,17 @@
+{
+  "name": "real-time-pos-system",
+  "version": "1.0.0",
+  "description": "Node.js app that connect the react-pos app to the Database",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Prajwal Bati",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.3",
+    "http": "0.0.0",
+    "nedb": "^1.8.0",
+    "nodemon": "^1.18.4"
+  }
+}
