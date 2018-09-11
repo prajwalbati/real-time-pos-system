@@ -3,7 +3,9 @@ var server = require("http").Server(app);
 var bodyParser = require("body-parser");
 var Datastore = require("nedb");
 var async = require("async");
+
 app.use(bodyParser.json());
+
 module.exports = app;
 
 // Creates  Database
@@ -36,15 +38,17 @@ app.get("/products", function(req, res) {
   });
 });
 
-// Create inventory product
+// post inventory product
 app.post("/product", function(req, res) {
   var newProduct = req.body;
+
   inventoryDB.insert(newProduct, function(err, product) {
     if (err) res.status(500).send(err);
     else res.send(product);
   });
 });
 
+//delete product using product id
 app.delete("/product/:productId", function(req, res) {
   inventoryDB.remove({ _id: req.params.productId }, function(err, numRemoved) {
     if (err) res.status(500).send(err);
@@ -55,6 +59,7 @@ app.delete("/product/:productId", function(req, res) {
 // Updates inventory product
 app.put("/product", function(req, res) {
   var productId = req.body._id;
+
   inventoryDB.update({ _id: productId }, req.body, {}, function(
     err,
     numReplaced,
@@ -78,6 +83,7 @@ app.decrementInventory = function(products) {
         var updatedQuantity =
           parseInt(product.quantity_on_hand) -
           parseInt(transactionProduct.quantity);
+
         inventoryDB.update(
           { _id: product._id },
           { $set: { quantity_on_hand: updatedQuantity } },

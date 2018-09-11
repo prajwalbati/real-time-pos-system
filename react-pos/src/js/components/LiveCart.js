@@ -101,6 +101,7 @@ class LiveCart extends Component {
                     $0<span />
                   </span>
                 </div>
+
                 <table className="table table-hover table-striped">
                   <thead>
                     <tr>
@@ -118,4 +119,5 @@ class LiveCart extends Component {
     );
   }
 }
+
 export default LiveCart;

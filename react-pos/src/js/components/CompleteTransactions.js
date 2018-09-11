@@ -10,7 +10,7 @@ class CompleteTransactions extends Component {
       items: []
     };
   }
-  
+
   render() {
     var { date, total, items } = this.props;
     var renderQuantity = items => {
